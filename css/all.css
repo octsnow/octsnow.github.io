@@ -1,0 +1,114 @@
+﻿// h4以降は使わない
+h1, h2, h3{
+    font-weight:normal;
+}
+h1{
+    font-size: 6em;
+}
+
+h2{
+    font-size: 3em;
+}
+
+h3{
+    font-size: 2em;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: #aef;
+    margin: 0px;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+header h1 {
+    text-align: center;
+}
+
+#main-nav {
+    width: 100%;
+    padding: 0px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.05);
+}
+
+#main-nav:after{
+    content: "";
+    display: block;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.15);
+}
+
+#main-nav ul{
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	list-style: none;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+#main-nav li {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    cursor: pointer;
+    display: block;
+    flex: 1;
+}
+
+#main-nav a {
+    display: block;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    text-decoration: none;
+    padding: 10px 3em;
+    font-size: large-xx;
+    padding: 1em 0px;
+}
+
+#main-nav a:active {
+    color: #000;
+}
+
+
+#main-nav a:hover {
+    background: #fde;
+}
+
+#center {
+    text-align: center;
+    padding: 1em;
+    background: #cff;
+}
+
+/* メニューバーを画面上にくっつけるクラス */
+.fixed {
+    position: fixed;
+    top: 0;
+}
+
+
+@media screen and ( max-width: 757px )
+{
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+#nav-list {
+	flex-direction: column;
+}
+
+}

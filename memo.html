@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="jgGyhPvA9QYXM8NvzvGi3j22-wLjPa6nQ4zfkiIsugk" />
+	<link rel="icon" href="./Hiki_icon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="./Hiki_icon.png" sizes="144x144">
+	<link rel="icon" type="image/png" href="./Hiki_icon.png" sizes="144x144">
+    <link href="css/all.css" rel="stylesheet" type="text/css">
+    <link href="css/memo.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <title>ひきこもり部屋 | ＭＥＭＯ</title>
+</head>
+
+<body>
+    <header>
+        <h1 id="logo">ひきこもり<ruby>部<rt>べ</rt>屋<rt>や</rt></ruby></h1>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="./">ＴＯＰ</a></li>
+                <li><a href="#">ＭＥＭＯ</a></li>
+                <li><a href="any">いろいろ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="center">
+        <section class="discription">
+                プログラミングのいろいろメモ
+        </p>
+        <section id="contents-list">
+            <h3>目次</h3>
+            <ul>
+            </ul>
+        </section>
+        
+        <div id="main">
+			<section id="memo">
+	            <h3>任意のフレーム間表示する</h3>
+	            <p>
+	                    今回はJavaScriptで説明。ゲーム製作で"ここで敵を10フレームだけ表示したい"などのようなときはジェネレータを使うと便利。ジェネータとは、以下のものである。
+	            </p>
+	            <pre class="prettyprint linenums lang-JAVASCRIPT">
+	function* generator(){
+	    let a = 1;
+
+	    yield a;
+	    a++;
+	    yield a;
+	    a++;
+	    yield a;
+	}
+
+	let g = generator();
+
+	consol.log(g.next());
+	consol.log(g.next());
+	consol.log(g.next());
+	            </pre>
+	            <pre class="consol">
+	1
+	2
+	3
+	            </pre>
+	            <p>
+	                ここでは、ジェネレータの説明はしない。これを使い、例えば
+	            </p>
+	            <pre class="prettyprint linenums lang-JAVASCRIPT">
+	function* Generator(frame){
+	    for(let i = 0; i < frame; i++){
+	        描画関数();
+	    }
+	}
+
+	毎フレーム呼び出される関数(){
+	    g.next();
+	}
+	            </pre>
+	            <p>
+	                とすることで、好きな時に「g = Generator(10);」とすれば、その時から10フレームだけ描画することができる。(※変数gは、何も処理しないジェネレータ関数か「Generator(0)」で初期化しておかなければ、エラーが出る。)また、
+	            </p>
+	            <pre class="prettyprint  linenums lang-JAVASCRIPT">
+	function StartGen(frame){
+	    g = Generator(frame);
+	}
+	            </pre>
+	            <p>
+	                としておけば、「StartGen(10);」のように普通の関数のように使うことができる。
+	            </p>
+	  		</section>
+	  		
+	  		
+	  		<section id="memo">
+	  			<h3>リスト末尾からのアクセス(python)</h3>
+	  			<p>
+	  				pythonでのリスト末尾からのアクセスは
+	  			</p>
+	  			<pre class="prettyprint linenums lang-PYTHON">
+a = [ 1, 2, 3, 4, 5 ]
+print( a[-1] )	# 5
+print( a[-2] )	# 4
+print( a[-3] )	# 3
+				</pre>
+				<p>
+					であるが、ビット演算子「~」を使えばよりわかりやすくアクセスできる。
+				</p>
+				<pre class="prettyprint linenums lang-PYTHON">
+print( ~0 )	# -1
+print( ~1 )	# -2
+print( ~2 )	# -3
+
+
+a = [ 1, 2, 3, 4, 5 ]
+
+print( a[~0] )	# 5
+print( a[~1] )	# 4
+print( a[~2] )	# 3
+				</pre>
+				<p>
+					a[~n]とすると末尾からn番目の要素へアクセスでき、先頭からアクセスするときと同じように書くことができる。わかりやすい。
+				</p>
+	  		</section>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="js/all.js" type="text/javascript"></script>
+	<script src="js/memo.js" type="text/javascript"></script>
+</body>
+
+</html>
